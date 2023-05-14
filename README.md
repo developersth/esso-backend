@@ -12,3 +12,9 @@ dotnet ef migrations add InitialCreate
 
 ## Create your database and schema
 dotnet ef database update
+
+## เข้าไปใน container
+docker exec -it  mssql-server bash
+
+## docker copy file
+docker cp "D:\Dragon Database Backup" mssql-server:/home

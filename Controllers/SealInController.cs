@@ -102,6 +102,25 @@ namespace backend.Controllers
             }
         }
 
+        [HttpGet("GetSealBetWeen")]
+        public IActionResult GetSealBetWeen()
+        {
+            try
+            {
+                var result = Context.SealIn.Where(p => p.IsActive == false); //find ยังไม่ได้ใช้งาน
+
+                if (result == null)
+                {
+                    return NotFound();
+                }
+                return Ok(new { result = result, message = "request successfully" });
+            }
+            catch (Exception error)
+            {
+                _logger.LogError($"Log Get: {error}");
+                return StatusCode(500, new { result = "", message = error });
+            }
+        }
         // GET api/<SealInController>/5
         [HttpGet("{id}")]
         public ActionResult Get(int id)

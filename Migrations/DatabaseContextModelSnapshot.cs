@@ -267,6 +267,9 @@ namespace backend.Migrations
                         .HasColumnType("bit")
                         .HasDefaultValueSql("1");
 
+                    b.Property<int?>("SealTotal")
+                        .HasColumnType("int");
+
                     b.Property<string>("TruckHead")
                         .HasColumnType("nvarchar(max)");
 

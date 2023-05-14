@@ -12,7 +12,7 @@ using backend.Database;
 namespace backend.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20230513143457_InitialCreate")]
+    [Migration("20230514100941_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -269,6 +269,9 @@ namespace backend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
                         .HasDefaultValueSql("1");
+
+                    b.Property<int?>("SealTotal")
+                        .HasColumnType("int");
 
                     b.Property<string>("TruckHead")
                         .HasColumnType("nvarchar(max)");

@@ -29,7 +29,8 @@ namespace backend.Database
 
             modelBuilder.Entity<Users>(entity =>
             {
-                entity.HasIndex(e => e.Username).HasName("AK_Users_Username").IsUnique();
+                entity.HasIndex(e => e.Username).HasName("IDX_Users_Username").IsUnique();
+                entity.HasAlternateKey(u => u.Username).HasName("UX_Users_Username");
                 entity.Property(e => e.Username).IsRequired();
                 entity.Property(e => e.Created).HasDefaultValueSql("(getdate())");
                 entity.Property(e => e.Updated).HasDefaultValueSql("(getdate())");

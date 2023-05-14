@@ -140,7 +140,7 @@ namespace backend.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TruckHead = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TruckTail = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SealTotal = table.Column<int>(type: "int", nullable: true,defaultValueSql: "0"),
+                    SealTotal = table.Column<int>(type: "int", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: true, defaultValueSql: "1"),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "(getdate())"),
                     Updated = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "(getdate())")

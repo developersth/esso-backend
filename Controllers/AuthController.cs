@@ -38,11 +38,16 @@ namespace backend.Controllers
         {
             try
             {
+                var existingUser = Context.Users.FirstOrDefault(u => u.Username == model.Username);
+                if (existingUser != null)
+                {
+                    return Ok(new { result = "failure",success=false, message = "มีข้อมูลผู้ใช้งาน" });
+                }
                 model.Password = Crypto.HashPassword(model.Password);
                 Context.Users.Add(model);
                 Context.SaveChanges();
 
-                return Ok(new { result = "ok", message = "register successfully" });
+                return Ok(new { result = "ok", message = "ลงทะเบียนผู้ใช้งานสำเร็จแล้ว" });
             }
             catch (Exception error)
             {
@@ -80,10 +85,10 @@ namespace backend.Controllers
 
         private string BuildToken(Users user)
         {
-            string roleName =string.Empty;
-            var result = Context.Roles.FirstOrDefault(role => role.Id==user.Id);
-            if (result!=null)
-                roleName =result.Name;
+            string roleName = string.Empty;
+            var result = Context.Roles.FirstOrDefault(role => role.Id == user.Id);
+            if (result != null)
+                roleName = result.Name;
             // key is case-sensitive
             var claims = new[] {
                 new Claim(JwtRegisteredClaimNames.Sub, Configuration["Jwt:Subject"]),
