@@ -129,11 +129,11 @@ namespace backend.Migrations
 
             modelBuilder.Entity("backend.Models.SealOut", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("Created")
                         .ValueGeneratedOnAdd()
@@ -154,6 +154,12 @@ namespace backend.Migrations
                         .HasColumnType("bit")
                         .HasDefaultValueSql("0");
 
+                    b.Property<int?>("SealToTal")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SealToTalExtra")
+                        .HasColumnType("int");
+
                     b.Property<int?>("TruckId")
                         .HasColumnType("int");
 
@@ -168,13 +174,7 @@ namespace backend.Migrations
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("sealToTal")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("sealToTalExtra")
-                        .HasColumnType("int");
-
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("SealOut");
                 });
@@ -194,6 +194,9 @@ namespace backend.Migrations
 
                     b.Property<int?>("Pack")
                         .HasColumnType("int");
+
+                    b.Property<string>("SealBetween")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("SealInId")
                         .HasColumnType("int");
@@ -325,9 +328,12 @@ namespace backend.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasAlternateKey("Username")
+                        .HasName("UX_Users_Username");
+
                     b.HasIndex("Username")
                         .IsUnique()
-                        .HasDatabaseName("AK_Users_Username");
+                        .HasDatabaseName("IDX_Users_Username");
 
                     b.ToTable("Users");
                 });

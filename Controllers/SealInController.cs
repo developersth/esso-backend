@@ -42,7 +42,7 @@ namespace backend.Controllers
                             query = query.Where(p => p.Id == id);
                             break;
 
-                        case "sealBetweenn":
+                        case "sealBetween":
                             query = query.Where(p => p.SealBetween.Contains(searchTerm));
                             break;
                         case "pack":

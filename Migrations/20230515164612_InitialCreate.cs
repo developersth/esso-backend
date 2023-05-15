@@ -68,10 +68,10 @@ namespace backend.Migrations
                 name: "SealOut",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    sealToTal = table.Column<int>(type: "int", nullable: true),
-                    sealToTalExtra = table.Column<int>(type: "int", nullable: true),
+                    SealToTal = table.Column<int>(type: "int", nullable: true),
+                    SealToTalExtra = table.Column<int>(type: "int", nullable: true),
                     TruckId = table.Column<int>(type: "int", nullable: true),
                     TruckName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DriverId = table.Column<int>(type: "int", nullable: true),
@@ -84,7 +84,7 @@ namespace backend.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SealOut", x => x.id);
+                    table.PrimaryKey("PK_SealOut", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -95,6 +95,7 @@ namespace backend.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     SealOutId = table.Column<int>(type: "int", nullable: false),
                     SealInId = table.Column<int>(type: "int", nullable: true),
+                    SealBetween = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Pack = table.Column<int>(type: "int", nullable: true),
                     SealType = table.Column<int>(type: "int", nullable: true),
                     SealTypeName = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -168,6 +169,7 @@ namespace backend.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
+                    table.UniqueConstraint("UX_Users_Username", x => x.Username);
                 });
 
             migrationBuilder.CreateIndex(
@@ -177,7 +179,7 @@ namespace backend.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "AK_Users_Username",
+                name: "IDX_Users_Username",
                 table: "Users",
                 column: "Username",
                 unique: true);

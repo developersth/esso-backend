@@ -5,10 +5,10 @@ namespace backend.Models
 {
     public partial class SealOut
     {
-        public Int32 id { get; set; }
-        public int? sealToTal { get; set; }
+        public Int32 Id { get; set; }
+        public int? SealTotal { get; set; }
 
-        public int? sealToTalExtra { get; set; }
+        public int? SealToTalExtra { get; set; }
         public int? TruckId { get; set; }
         public string? TruckName { get; set; }
         public int? DriverId { get; set; }
@@ -35,7 +35,8 @@ namespace backend.Models
     
     public  class SealOutTodo
     {
-        public int? sealToTal { get; set; }
+        public Int32? SealInId { get; set; }
+        public int? SealTotal { get; set; }
         public int? TruckId { get; set; }
         public string? TruckName { get; set; }
         public List<SealOutInfo> SealOutInfo {get; set; }
